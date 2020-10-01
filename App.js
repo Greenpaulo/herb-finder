@@ -1,11 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
+import Body from './components/body-svg'
+import Heart from './components/heart-svg'
+import Throat from './components/throat-svg'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Hello Chebs!</Text>
+      <Body />
+      <Heart />
+      <Throat />
       <StatusBar style="auto" />
     </View>
   );

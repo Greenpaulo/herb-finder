@@ -21,6 +21,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "A herbal medicine app to help you find the right herb for your condition."
   }
 }
