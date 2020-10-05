@@ -7,8 +7,15 @@ const { Navigator, Screen } = createStackNavigator();
 
 export default HomeStack = () => (
   <Navigator headerMode="screen">
-    <Screen name="Home" component={Home} />
-    <Screen name="Conditions" component={Conditions} />
+    <Screen 
+      name="Home" 
+      component={Home}
+      options={{ title: "Herb Finder"}} 
+      />
+    <Screen 
+      name="Conditions" 
+      component={Conditions} 
+      options={({ route }) => ({ title: route.params.category.title })}/>
   </Navigator>
 );
 

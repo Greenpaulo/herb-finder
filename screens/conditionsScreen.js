@@ -1,10 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Conditions() {
+export default function Conditions({ route, navigation}) {
+  
+  const { category } = route.params;
+  
   return (
     <View style={styles.container}>
-      <Text>Conditions Screen</Text>
+      <Text>{category.title}</Text>
     </View>
   );
 }

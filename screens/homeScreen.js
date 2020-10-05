@@ -1,5 +1,6 @@
 import React, { useState }  from 'react';
-import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
+// import { ScrollView } from 'react-native-gesture-handler';
 import CategoryIcon from '../components/categoryIcon';
 
 
@@ -19,21 +20,31 @@ export default function HomeScreen({ navigation }) {
     { title: "Children/Babies", keyword: "children", imgSrc: require("../assets/mental.png") }
   ]);
 
+  const onPressHandler = (category) => {
+    navigation.navigate('Conditions', { category: category })
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
+
+      {/* <ScrollView style={styles.scrollView}>
+        {categories.map((category) => {
+          return (
+            <CategoryIcon key={Math.random()} category={category} onPressHandler={onPressHandler} />
+          )
+        })}
+      </ScrollView> */}
 
       <FlatList 
+        contentContainerStyle={styles.iconList}
+        // horizontal={true}
         data={categories}
-        renderItem= {({ category }) => (
-          <CategoryIcon category={category}/>
+        renderItem= {( category ) => (
+          <CategoryIcon category={category} onPressHandler={onPressHandler}/>
         )}
+        numColumns={2}
       />
 
-      <Button
-        title="Go to Conditions"
-        onPress={() => navigation.navigate('Conditions')}
-      />
     </View>
   );
 }
@@ -41,8 +52,30 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    // flexWrap: "wrap",
+    // justifyContent: "space-around",
+    backgroundColor: '#31b526',
+    // paddingHorizontal: 20,
+    // paddingTop: 20
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
+  // scrollView: {
+  //   width: "100%",
+  //   flex: 1,
+  //   flexDirection: "row",
+  //   backgroundColor: "black"
+  // }
+  iconList: {
+    // flex: 1,
+    // flexDirection: "row"
+    width: "100%",
+    // paddingLeft: 20,
+    paddingTop: 20,
+    justifyContent: "space-around",
+    alignContent: "space-around",
+    alignItems: "center",
+    // backgroundColor: "black"
+  }
 });
