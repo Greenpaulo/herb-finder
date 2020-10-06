@@ -1,6 +1,5 @@
 import React, { useState }  from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
-// import { ScrollView } from 'react-native-gesture-handler';
 import CategoryIcon from '../components/categoryIcon';
 
 
@@ -11,13 +10,13 @@ export default function HomeScreen({ navigation }) {
     { title: "Skin", keyword: "skin", imgSrc: require("../assets/skin.png"), iconColor: "#F78930", width: 75, height: 75 },
     { title: "Joints/Muscles", keyword: "joints", imgSrc: require("../assets/joints.png"), iconColor: "#D7455C", width: 100, height: 100 },
     { title: 'Throat/Chest', keyword: 'throat', imgSrc: require("../assets/throat.png"), iconColor: "#2193CF", width: 100, height: 100 },
-    { title: "Bladder/Urinary", keyword: "bladder", imgSrc: require("../assets/urinary.png"), iconColor: "#F78930", width: 100, height: 100 },
-    { title: "Digestion", keyword: "digestion", imgSrc: require("../assets/mental.png"), iconColor: "##D7455C", width: 100, height: 100 },
-    { title: "Heart/Circulation", keyword: "heart", imgSrc: require("../assets/mental.png"), iconColor: "#D7455C", width: 100, height: 100 },
-    { title: "Head", keyword: "head", imgSrc: require("../assets/mental.png"), iconColor: "#F78930", width: 100, height: 100 },
-    { title: "Women's Health", keyword: "womens", imgSrc: require("../assets/mental.png"), iconColor: "#F78930", width: 100, height: 100 },
-    { title: "Men's Health", keyword: "mens", imgSrc: require("../assets/mental.png"), iconColor: "#F78930", width: 100, height: 100 },
-    { title: "Children/Babies", keyword: "children", imgSrc: require("../assets/mental.png"), iconColor: "#F78930", width: 100, height: 100 }
+    { title: "Bladder/Urinary", keyword: "bladder", imgSrc: require("../assets/urinary.png"), iconColor: "#85BA48", width: 100, height: 100 },
+    { title: "Digestion", keyword: "digestion", imgSrc: require("../assets/digestion.png"), iconColor: "#9B69AE", width: 100, height: 100 },
+    { title: "Heart/Circulation", keyword: "heart", imgSrc: require("../assets/heart.png"), iconColor: "#D7455C", width: 100, height: 100 },
+    { title: "Head", keyword: "head", imgSrc: require("../assets/head.png"), iconColor: "#F78930", width: 100, height: 100 },
+    { title: "Women's Health", keyword: "womens", imgSrc: require("../assets/female.png"), iconColor: "#85BA48", width: 100, height: 100 },
+    { title: "Men's Health", keyword: "mens", imgSrc: require("../assets/male.png"), iconColor: "#2193CF", width: 100, height: 100 },
+    // { title: "Children/Babies", keyword: "children", imgSrc: require("../assets/mental.png"), iconColor: "#F78930", width: 100, height: 100 }
   ]);
 
   const onPressHandler = (category) => {
