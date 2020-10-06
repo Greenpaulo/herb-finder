@@ -7,17 +7,17 @@ import CategoryIcon from '../components/categoryIcon';
 export default function HomeScreen({ navigation }) {
   
   const [ categories, setCategories ] = useState([
-    { title: "Mental/Emotional", keyword: "mental", imgSrc: require("../assets/mental.png") },
-    { title: "Skin", keyword: "skin", imgSrc: require("../assets/mental.png") },
-    { title: "Joints/Muscles", keyword: "joints", imgSrc: require("../assets/mental.png") },
-    { title: "Digestion", keyword: "digestion", imgSrc: require("../assets/mental.png") },
-    { title: 'Throat/Chest', keyword: 'throat', imgSrc: require("../assets/mental.png") },
-    { title: "Bladder/Urinary", keyword: "bladder", imgSrc: require("../assets/mental.png") },
-    { title: "Heart/Circulation", keyword: "heart", imgSrc: require("../assets/mental.png") },
-    { title: "Head", keyword: "head", imgSrc: require("../assets/mental.png") },
-    { title: "Women's Health", keyword: "womens", imgSrc: require("../assets/mental.png") },
-    { title: "Men's Health", keyword: "mens", imgSrc: require("../assets/mental.png") },
-    { title: "Children/Babies", keyword: "children", imgSrc: require("../assets/mental.png") }
+    { title: "Mental/Emotional", keyword: "mental", imgSrc: require("../assets/mental.png"), iconColor: "#9B69AE", width: 100, height: 100 },
+    { title: "Skin", keyword: "skin", imgSrc: require("../assets/skin.png"), iconColor: "#F78930", width: 75, height: 75 },
+    { title: "Joints/Muscles", keyword: "joints", imgSrc: require("../assets/joints.png"), iconColor: "#D7455C", width: 100, height: 100 },
+    { title: 'Throat/Chest', keyword: 'throat', imgSrc: require("../assets/throat.png"), iconColor: "#2193CF", width: 100, height: 100 },
+    { title: "Bladder/Urinary", keyword: "bladder", imgSrc: require("../assets/urinary.png"), iconColor: "#F78930", width: 100, height: 100 },
+    { title: "Digestion", keyword: "digestion", imgSrc: require("../assets/mental.png"), iconColor: "##D7455C", width: 100, height: 100 },
+    { title: "Heart/Circulation", keyword: "heart", imgSrc: require("../assets/mental.png"), iconColor: "#D7455C", width: 100, height: 100 },
+    { title: "Head", keyword: "head", imgSrc: require("../assets/mental.png"), iconColor: "#F78930", width: 100, height: 100 },
+    { title: "Women's Health", keyword: "womens", imgSrc: require("../assets/mental.png"), iconColor: "#F78930", width: 100, height: 100 },
+    { title: "Men's Health", keyword: "mens", imgSrc: require("../assets/mental.png"), iconColor: "#F78930", width: 100, height: 100 },
+    { title: "Children/Babies", keyword: "children", imgSrc: require("../assets/mental.png"), iconColor: "#F78930", width: 100, height: 100 }
   ]);
 
   const onPressHandler = (category) => {
@@ -27,18 +27,10 @@ export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
 
-      {/* <ScrollView style={styles.scrollView}>
-        {categories.map((category) => {
-          return (
-            <CategoryIcon key={Math.random()} category={category} onPressHandler={onPressHandler} />
-          )
-        })}
-      </ScrollView> */}
-
       <FlatList 
         contentContainerStyle={styles.iconList}
-        // horizontal={true}
         data={categories}
+        keyExtractor={(item, index) => index}
         renderItem= {( category ) => (
           <CategoryIcon category={category} onPressHandler={onPressHandler}/>
         )}

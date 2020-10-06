@@ -3,14 +3,23 @@ import { StyleSheet, Text, View, TouchableWithoutFeedback, TouchableOpacity, Ima
 
 export default function Category({ category, onPressHandler }) {
   // console.log(category.item.imgSrc)
+
+  const iconBackground = {
+    backgroundColor: category.item.iconColor
+  }
+
+  const iconSize = {
+    width: category.item.width,
+    height: category.item.height
+  }
   
   return (
-    <View style={styles.iconContainer}>
+    <View style={[styles.iconContainer, iconBackground]}>
       <TouchableOpacity onPress={() => onPressHandler(category.item)}>
         <Image
           source={category.item.imgSrc}
           fadeDuration={0}
-          style={{ width: 100, height: 100 }}
+          style={[styles.icon, iconSize]}
         />
       </TouchableOpacity>
     </View>
@@ -21,14 +30,13 @@ const styles = StyleSheet.create({
   iconContainer: {
     width: 150,
     height: 150,
-    // display: "inline",
-    backgroundColor: 'green',
     alignItems: 'center',
     justifyContent: 'center',
-    borderStyle: "solid",
-    borderColor: "black",
     borderRadius: 150/2,
     marginVertical: 15,
     marginHorizontal: 15
   },
+  icon: {
+    padding: 10
+  }
 });
