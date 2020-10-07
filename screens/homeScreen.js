@@ -6,16 +6,16 @@ import CategoryIcon from '../components/categoryIcon';
 export default function HomeScreen({ navigation }) {
   
   const [ categories, setCategories ] = useState([
-    { title: "Mental/Emotional", keyword: "mental", imgSrc: require("../assets/mental.png"), iconColor: "#9B69AE", width: 100, height: 100 },
-    { title: "Skin", keyword: "skin", imgSrc: require("../assets/skin.png"), iconColor: "#F78930", width: 75, height: 75 },
-    { title: "Joints/Muscles", keyword: "joints", imgSrc: require("../assets/joints.png"), iconColor: "#D7455C", width: 100, height: 100 },
-    { title: 'Throat/Chest', keyword: 'throat', imgSrc: require("../assets/throat.png"), iconColor: "#2193CF", width: 100, height: 100 },
-    { title: "Bladder/Urinary", keyword: "bladder", imgSrc: require("../assets/urinary.png"), iconColor: "#85BA48", width: 100, height: 100 },
-    { title: "Digestion", keyword: "digestion", imgSrc: require("../assets/digestion.png"), iconColor: "#9B69AE", width: 100, height: 100 },
-    { title: "Heart/Circulation", keyword: "heart", imgSrc: require("../assets/heart.png"), iconColor: "#D7455C", width: 100, height: 100 },
-    { title: "Head", keyword: "head", imgSrc: require("../assets/head.png"), iconColor: "#F78930", width: 100, height: 100 },
-    { title: "Women's Health", keyword: "womens", imgSrc: require("../assets/female.png"), iconColor: "#85BA48", width: 100, height: 100 },
-    { title: "Men's Health", keyword: "mens", imgSrc: require("../assets/male.png"), iconColor: "#2193CF", width: 100, height: 100 },
+    { title: "Mental/Emotional", keyword: "mental", imgSrc: require("../assets/mental.png"), iconColor: "#9B69AE", width: 85, height: 85, margin: [0,0,5,5] },
+    { title: "Skin", keyword: "skin", imgSrc: require("../assets/skin.png"), iconColor: "#F78930", width: 90, height: 90, margin: [0,10,0,0] },
+    { title: "Joints/Muscles", keyword: "joints", imgSrc: require("../assets/joints.png"), iconColor: "#D7455C", width: 95, height: 95 },
+    { title: 'Throat/Chest', keyword: 'throat', imgSrc: require("../assets/throat.png"), iconColor: "#2193CF", width: 95, height: 95 },
+    { title: "Bladder/Urinary", keyword: "bladder", imgSrc: require("../assets/urinary.png"), iconColor: "#85BA48", width: 80, height: 80, margin: [0,0,4,4] },
+    { title: "Digestion", keyword: "digestion", imgSrc: require("../assets/digestion.png"), iconColor: "#9B69AE", width: 90, height: 90 },
+    { title: "Heart/Circulation", keyword: "heart", imgSrc: require("../assets/heart.png"), iconColor: "#D7455C", width: 90, height: 90, margin: [0,0,0,4] },
+    { title: "Head", keyword: "head", imgSrc: require("../assets/head.png"), iconColor: "#F78930", width: 95, height: 95 },
+    { title: "Women's Health", keyword: "womens", imgSrc: require("../assets/female.png"), iconColor: "#85BA48", width: 70, height: 70, margin: [0,0,5,10] },
+    { title: "Men's Health", keyword: "mens", imgSrc: require("../assets/male.png"), iconColor: "#2193CF", width: 70, height: 70, margin: [0,0,7,0] },
     // { title: "Children/Babies", keyword: "children", imgSrc: require("../assets/mental.png"), iconColor: "#F78930", width: 100, height: 100 }
   ]);
 
@@ -44,29 +44,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    // flexWrap: "wrap",
-    // justifyContent: "space-around",
     backgroundColor: '#31b526',
-    // paddingHorizontal: 20,
-    // paddingTop: 20
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
-  // scrollView: {
-  //   width: "100%",
-  //   flex: 1,
-  //   flexDirection: "row",
-  //   backgroundColor: "black"
-  // }
   iconList: {
-    // flex: 1,
-    // flexDirection: "row"
     width: "100%",
-    // paddingLeft: 20,
     paddingTop: 20,
     justifyContent: "space-around",
     alignContent: "space-around",
     alignItems: "center",
-    // backgroundColor: "black"
   }
 });

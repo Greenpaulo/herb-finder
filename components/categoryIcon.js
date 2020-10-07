@@ -8,9 +8,21 @@ export default function Category({ category, onPressHandler }) {
     backgroundColor: category.item.iconColor
   }
 
-  const iconSize = {
-    width: category.item.width,
-    height: category.item.height
+  const iconSize = () => {
+     return (category.item.margin ? 
+    {
+      width: category.item.width,
+      height: category.item.height,
+      marginTop: category.item.margin[0],
+      marginRight: category.item.margin[1],
+      marginBottom: category.item.margin[2],
+      marginLeft: category.item.margin[3]
+    }
+    :
+    {
+      width: category.item.width,
+      height: category.item.height,
+    })
   }
   
   return (
@@ -19,8 +31,9 @@ export default function Category({ category, onPressHandler }) {
         <Image
           source={category.item.imgSrc}
           fadeDuration={0}
-          style={[styles.icon, iconSize]}
+          style={[styles.icon, iconSize()]}
         />
+        <Text style={styles.iconText}>{category.item.title}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -34,9 +47,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 150/2,
     marginVertical: 15,
-    marginHorizontal: 15
+    marginHorizontal: 15,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+    elevation: 9,
   },
-  icon: {
-    padding: 10
+  // icon: {
+  //   marginRight: 
+  // },
+
+  iconText: {
+    color: "white",
+    textAlign: "center",
+    fontSize: 12.5,
+    marginBottom: 10
   }
 });
