@@ -17,7 +17,7 @@ export default AboutStack = ({ navigation }) => (
     }}
     >
     <Screen name="About" component={About} options={{
-      headerTitle: () => <Header navigation={navigation} />
+      headerTitle: () => <Header navigation={navigation} title='About' />
     }}/>
   </Navigator>
 );

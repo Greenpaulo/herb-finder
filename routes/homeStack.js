@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "../screens/homeScreen";
-import Conditions from "../screens/conditionsScreen";
+import HomeScreen from "../screens/homeScreen";
+import ConditionsScreen from "../screens/conditionsScreen";
 import Header from '../components/header';
 
 const { Navigator, Screen } = createStackNavigator();
@@ -19,14 +19,18 @@ export default HomeStack = ({ navigation }) => (
     >
     <Screen 
       name="Home" 
-      component={Home}
+      component={HomeScreen}
       options={{ 
-        headerTitle: () => <Header navigation={navigation} /> }}
+        headerTitle: () => <Header navigation={navigation} title='Herb Finder' />}}
       />
     <Screen 
       name="Conditions" 
-      component={Conditions} 
-      options={({ route }) => ({ title: route.params.category.title })}/>
+      component={ConditionsScreen} 
+      options={({ route }) => (
+        { title: route.params.category.title,
+          headerTintColor: '#fff' 
+        }
+      )}/>
   </Navigator>
 );
 
