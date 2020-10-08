@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableWithoutFeedback, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { globalStyles } from '../styles/global';
 
 export default function Category({ category, onPressHandler }) {
   // console.log(category.item.imgSrc)
@@ -9,20 +10,21 @@ export default function Category({ category, onPressHandler }) {
   }
 
   const iconSize = () => {
-     return (category.item.margin ? 
-    {
-      width: category.item.width,
-      height: category.item.height,
-      marginTop: category.item.margin[0],
-      marginRight: category.item.margin[1],
-      marginBottom: category.item.margin[2],
-      marginLeft: category.item.margin[3]
-    }
-    :
-    {
-      width: category.item.width,
-      height: category.item.height,
-    })
+     if(category.item.margin){
+       return {
+         width: category.item.width,
+         height: category.item.height,
+         marginTop: category.item.margin[0],
+         marginRight: category.item.margin[1],
+         marginBottom: category.item.margin[2],
+         marginLeft: category.item.margin[3]
+       }
+     } else {
+       return {
+         width: category.item.width,
+         height: category.item.height,
+       }
+     }
   }
   
   return (
@@ -33,7 +35,7 @@ export default function Category({ category, onPressHandler }) {
           fadeDuration={0}
           style={[styles.icon, iconSize()]}
         />
-        <Text style={styles.iconText}>{category.item.title}</Text>
+        <Text style={[styles.iconText, globalStyles.boldText]}>{category.item.title}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -41,21 +43,21 @@ export default function Category({ category, onPressHandler }) {
 
 const styles = StyleSheet.create({
   iconContainer: {
-    width: 150,
-    height: 150,
+    width: 160,
+    height: 160,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 150/2,
+    borderRadius: 160/2,
     marginVertical: 15,
     marginHorizontal: 15,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 5,
     },
     shadowOpacity: 0.32,
     shadowRadius: 5.46,
-    elevation: 9,
+    elevation: 10,
   },
   // icon: {
   //   marginRight: 
@@ -64,7 +66,8 @@ const styles = StyleSheet.create({
   iconText: {
     color: "white",
     textAlign: "center",
-    fontSize: 12.5,
-    marginBottom: 10
+    fontSize: 13,
+    marginBottom: 10,
+    // fontFamily: 'lato-bold'
   }
 });
