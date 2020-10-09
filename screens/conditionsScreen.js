@@ -16,7 +16,6 @@ export default function ConditionsScreen({ route, navigation}) {
       const response = await herbalistAPI.get(`/conditions?${category.keyword}`)
       const data = response.data;
       setConditions(data.conditions)
-      console.log('ourDATA', data.conditions[0]);
     }
 
     getConditions();
