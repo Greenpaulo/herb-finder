@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import herbalistAPI from '../api/theherbalist';
+import Condition from '../components/condition';
+
 
 export default function ConditionsScreen({ route, navigation}) {
   
@@ -28,7 +30,7 @@ export default function ConditionsScreen({ route, navigation}) {
       <FlatList 
         data={conditions}
         renderItem={(condition) => (
-          <Text>{condition.item.title}</Text>
+          <Condition navigation={navigation} condition={condition.item} color={category.iconColor}/>
         )}
       />
     </View>
@@ -38,7 +40,7 @@ export default function ConditionsScreen({ route, navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#31b526',
     alignItems: 'center',
     justifyContent: 'center',
   },

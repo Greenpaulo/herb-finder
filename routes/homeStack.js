@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/homeScreen";
 import ConditionsScreen from "../screens/conditionsScreen";
+import HerbsScreen from "../screens/herbsScreen";
 import Header from '../components/header';
 
 const { Navigator, Screen } = createStackNavigator();
@@ -28,6 +29,14 @@ export default HomeStack = ({ navigation }) => (
       component={ConditionsScreen} 
       options={({ route }) => (
         { title: route.params.category.title,
+          headerTintColor: '#fff' 
+        }
+      )}/>
+    <Screen 
+      name="Herbs" 
+      component={HerbsScreen} 
+      options={({ route }) => (
+        { title: 'Herbs For ' + route.params.condition.title,
           headerTintColor: '#fff' 
         }
       )}/>
