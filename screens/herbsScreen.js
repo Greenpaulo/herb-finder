@@ -1,21 +1,18 @@
 import React from 'react'
-import { View, Text, StyleSheet, FlatList } from 'react-native'
-import HerbCard from '../components/herbCard';
+import { View, StyleSheet, FlatList } from 'react-native'
+import HerbList from '../components/herbList'
+import HerbCard from '../components/card';
+import HerbFlatList from '../components/herbFlatList'
 
 export default function HerbsScreen({ route }) {
   
   const herbs = route.params.condition.herbs
 
-  console.log(herbs)
+  console.log('from herbsScreen', herbs)
   
   return (
     <View style={styles.container}>
-      <FlatList 
-        data={herbs}
-        renderItem={(herb) => (
-          <HerbCard herb={herb}/>
-        )}
-      />
+      <HerbFlatList herbs={herbs} />
     </View>
   )
 }
