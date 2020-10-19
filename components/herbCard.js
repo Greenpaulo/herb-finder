@@ -8,7 +8,7 @@ const { height: wHeight } = Dimensions.get("window");
 const height = wHeight - 64;
 
 
-const herbCard = ({ herb, y }) => {
+const herbCard = ({ herb, y, navigation }) => {
 
   const index = herb.index;
   
@@ -53,7 +53,7 @@ const herbCard = ({ herb, y }) => {
       style={[styles.card, { opacity, transform: [{ translateY }, { scale }] }]}
       key={index}
     >
-      <Card herb={herb} />
+      <Card herb={herb} navigation={navigation}/>
     </Animated.View>
   );
 };

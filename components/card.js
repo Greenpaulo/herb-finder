@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
 import herbalistAPI from '../api/theherbalist';
 import { globalStyles, images } from '../styles/global';
 
@@ -10,7 +10,7 @@ export const CARD_WIDTH = width * 0.9;
 export const CARD_HEIGHT = CARD_WIDTH * 0.6;
 
 
-export default function HerbCard({ herb }) {
+export default function HerbCard({ herb, navigation }) {
 
   const [ herbInfo, setHerbInfo ] = useState({})
 
@@ -25,8 +25,12 @@ export default function HerbCard({ herb }) {
     getHerbInfo();
   }, [])
 
+  const onPressHandler = () => {
+    navigation.navigate('HerbDetails', {herbInfo : herbInfo})
+  }
+
   return (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={onPressHandler}>
       <Image
         source={images.herbs[herbInfo.name]}
         fadeDuration={0}
@@ -36,7 +40,7 @@ export default function HerbCard({ herb }) {
         <Text style={[styles.name, globalStyles.boldText]}>{herbInfo.name}</Text>
         <Text style={styles.title}>{herbInfo.title}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 

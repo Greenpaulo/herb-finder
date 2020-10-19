@@ -9,14 +9,14 @@ const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y } } }], {
   useNativeDriver: true,
 });
 
-export default function herbFlatList({herbs}) {
+export default function herbFlatList({herbs, navigation}) {
   return (
     <AnimatedFlatList
       scrollEventThrottle={16}
       bounces={false}
       data={herbs}
       renderItem={(herb) => (
-        <HerbCard herb={herb} y={y} />
+        <HerbCard herb={herb} y={y} navigation={navigation}/>
       )}
       {...{ onScroll }}
     />

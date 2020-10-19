@@ -1,10 +1,8 @@
 import React from 'react'
-import { View, StyleSheet, FlatList } from 'react-native'
-import HerbList from '../components/herbList'
-import HerbCard from '../components/card';
+import { View, StyleSheet } from 'react-native'
 import HerbFlatList from '../components/herbFlatList'
 
-export default function HerbsScreen({ route }) {
+export default function HerbsScreen({ route, navigation }) {
   
   const herbs = route.params.condition.herbs
 
@@ -12,7 +10,7 @@ export default function HerbsScreen({ route }) {
   
   return (
     <View style={styles.container}>
-      <HerbFlatList herbs={herbs} />
+      <HerbFlatList herbs={herbs} navigation={navigation}/>
     </View>
   )
 }
