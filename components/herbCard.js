@@ -25,8 +25,8 @@ const herbCard = ({ herb, y, navigation }) => {
       y,
       y.interpolate({
         inputRange: [0, 0.00001 + index * CARD_HEIGHT],
-        outputRange: [0, -index * (CARD_HEIGHT + 2 * MARGIN)],
-        // outputRange: [0, -index * CARD_HEIGHT],
+        // outputRange: [0, -index * (CARD_HEIGHT + 2 * MARGIN)],
+        outputRange: [0, -index * CARD_HEIGHT],
         extrapolateRight: "clamp",
       })
     ),
