@@ -22,20 +22,19 @@ const styles = StyleSheet.create({
   condition: {
     padding: 30,
     marginVertical: 10,
-    borderRadius: 5,
-    // backgroundColor: 'green'
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.32,
-    shadowRadius: 5.46,
-    elevation: 10,
+    borderRadius: 10,
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 5,
+    // },
+    // shadowOpacity: 0.32,
+    // shadowRadius: 5.46,
+    // elevation: 10,
   },
   conditionText: {
     color: '#fff',
-    fontSize: 18
+    fontSize: 20,
 
   }
 });

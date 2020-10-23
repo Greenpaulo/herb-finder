@@ -28,6 +28,7 @@ export default function ConditionsScreen({ route, navigation}) {
     <View style={styles.container}>
       <FlatList 
         data={conditions}
+        style={styles.conditionList}
         renderItem={(condition) => (
           <Condition navigation={navigation} condition={condition.item} color={category.iconColor}/>
         )}
@@ -43,4 +44,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  conditionList: {
+    marginTop: 10
+  }
 });
