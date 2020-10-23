@@ -21,6 +21,7 @@ export default function Condition({navigation, condition, color}){
 const styles = StyleSheet.create({
   condition: {
     padding: 30,
+    minWidth: '75%',
     marginVertical: 10,
     borderRadius: 10,
     // shadowColor: "#000",

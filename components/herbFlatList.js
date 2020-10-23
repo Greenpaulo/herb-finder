@@ -1,5 +1,6 @@
 import React from 'react'
 import { Animated, FlatList } from 'react-native';
+import { v4 as uuidv4 } from 'uuid';
 import HerbCard from './herbCard';
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
@@ -16,8 +17,9 @@ export default function herbFlatList({herbs, navigation}) {
       bounces={false}
       data={herbs}
       renderItem={(herb) => (
-        <HerbCard herb={herb} y={y} navigation={navigation}/>
+        <HerbCard herb={herb} y={y} navigation={navigation} />
       )}
+      keyExtractor={() => uuidv4()}
       {...{ onScroll }}
     />
   )

@@ -12,9 +12,6 @@ const herbCard = ({ herb, y, navigation }) => {
 
   const index = herb.index;
   
-  console.log(herb, y, index)
-
-
   const position = Animated.subtract(index * CARD_HEIGHT, y);
   const isDisappearing = -CARD_HEIGHT;
   const isTop = 0;
