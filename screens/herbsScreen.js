@@ -6,8 +6,6 @@ export default function HerbsScreen({ route, navigation }) {
   
   const herbs = route.params.condition.herbs
 
-  console.log('from herbsScreen', herbs)
-  
   return (
     <View style={styles.container}>
       <HerbFlatList herbs={herbs} navigation={navigation}/>

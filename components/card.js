@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
 import herbalistAPI from '../api/theherbalist';
 import { globalStyles, images } from '../styles/global';
+import ActionList from './actionList';
 
 const { width } = Dimensions.get("window");
 // const ratio = 228 / 362;
@@ -19,11 +20,14 @@ export default function HerbCard({ herb, navigation }) {
     const getHerbInfo = async () => {
       const response = await herbalistAPI.get(`/herb/?${herb.item.replace(/\W/g, '')}`);
       const data = response.data;
-      // console.log(data)
       setHerbInfo(data)
     }
     getHerbInfo();
   }, [])
+
+  // console.log(herbInfo.actionsIndications)
+
+  
 
   const onPressHandler = () => {
     navigation.navigate('HerbDetails', {herbInfo : herbInfo})
@@ -39,6 +43,8 @@ export default function HerbCard({ herb, navigation }) {
       <View style={styles.info}>
         <Text style={[styles.name, globalStyles.boldText]}>{herbInfo.name}</Text>
         <Text style={styles.title}>{herbInfo.title}</Text>
+        {/* <Text style={styles.dosage}>{herbInfo.dosage}</Text> */}
+        <ActionList herbInfo={herbInfo}/>
       </View>
     </TouchableOpacity>
   )
@@ -65,13 +71,17 @@ const styles = StyleSheet.create({
     borderRadius: 120/2
   },
   info: {
-    marginLeft: 20,
+    marginLeft: 40,
   },
   name: {
-    fontSize: 18,
+    fontSize: 22,
     marginBottom: 5,
   },
   title: {
+    fontSize: 16,
     marginLeft: 2
+  },
+  dosage: {
+    width: 100
   }
 });
