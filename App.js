@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { AppNavigator } from "./routes/drawer";
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import 'react-native-get-random-values';
 
 const getFonts = () => Font.loadAsync({
   'lato-regular': require('./assets/fonts/Lato-Regular.ttf'),

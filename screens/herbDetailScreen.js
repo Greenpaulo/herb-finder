@@ -1,17 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
-import { v4 as uuidv4 } from 'uuid';
 import { images } from '../styles/global';
+
 
 
 export default function HerbDetailScreen({ route }) {
   
   const { herbInfo } = route.params
+
+  const genKey = () => {
+    const randomNumber = Math.floor(Math.random() * 1000) + 1;
+    return `${herbInfo.name}-${randomNumber}`
+  };
   
   const renderActionsIndications = () => {
     return herbInfo.actionsIndications.map((actInd) => {
       return (
-        <View style={styles.actInd} key={uuidv4()}>
+        <View style={styles.actInd} key={genKey()}>
           <View style={styles.actionsContainer}>
             <Text style={[styles.textWhite, styles.heading]}>Actions</Text>
             <Text style={[styles.textWhite, styles.actions]}>{actInd.actions}</Text>
@@ -28,8 +33,9 @@ export default function HerbDetailScreen({ route }) {
   const renderIndications = (actInd) => {
     return actInd.indications.map(indication => {
       return (
-        <View key={uuidv4()}>
-          <Text style={[styles.textWhite, styles.indications]}>{indication}</Text>
+        // need key
+        <View>
+          <Text style={[styles.textWhite, styles.indications]} key={`key-${genKey()}`}>{indication}</Text>
         </View>
       )
     })
@@ -50,7 +56,7 @@ export default function HerbDetailScreen({ route }) {
   
   const renderContraIndications = () => {
     return herbInfo.contraIndications.map((contraIndication) => {
-      return <Text style={styles.paragraph} key={uuidv4()}>{contraIndication}</Text>
+      return <Text style={styles.paragraph} key={genKey()}>{contraIndication}</Text>
     })
   }
 
@@ -99,7 +105,7 @@ export default function HerbDetailScreen({ route }) {
 
   const renderTrial = () => {
     return herbInfo.clinicalTrials.map((trial) => {
-      return <Text style={styles.paragraph} key={uuidv4()}>{trial}</Text>
+      return <Text style={styles.paragraph} key={genKey()}>{trial}</Text>
     })
   }
 
@@ -117,7 +123,7 @@ export default function HerbDetailScreen({ route }) {
 
   const renderUsage = () => {
     return herbInfo.externalUsage.map((usage) => {
-      return <Text style={styles.paragraph} key={uuidv4()}>{usage}</Text>
+      return <Text style={styles.paragraph} key={genKey()}>{usage}</Text>
     })
   }
 
@@ -135,12 +141,12 @@ export default function HerbDetailScreen({ route }) {
 
   const renderTradition = () => {
     return herbInfo.energeticUsage.map((usage) => {
-      return <Text style={styles.paragraph} key={uuidv4()}>{usage}</Text>
+      return <Text style={styles.paragraph} key={genKey()}>{usage}</Text>
     })
   }
 
-  
-  
+
+    
   return (
     <ScrollView 
       contentContainerStyle={styles.container}

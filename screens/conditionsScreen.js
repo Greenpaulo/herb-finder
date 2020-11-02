@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
-// import 'react-native-get-random-values';
-import { v4 as uuidv4 } from 'uuid';
 import herbalistAPI from '../api/theherbalist';
 import Condition from '../components/condition';
 
@@ -25,6 +23,10 @@ export default function ConditionsScreen({ route, navigation}) {
     }
   }, [])
 
+  // const generateUUID = () => {
+  //   UUIDGenerator.getRandomUUID(uuid => uuid);
+  // };
+
 
   return (
     <View style={styles.container}>
@@ -34,7 +36,7 @@ export default function ConditionsScreen({ route, navigation}) {
         renderItem={({item, index}) => (
           <Condition navigation={navigation} condition={item} color={category.iconColor} />
         )}
-        keyExtractor={() => uuidv4()}
+        keyExtractor={(item, index) => 'key' + index}
       />
     </View>
   );
