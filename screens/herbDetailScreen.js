@@ -2,8 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import { images } from '../styles/global';
 
-
-
 export default function HerbDetailScreen({ route }) {
   
   const { herbInfo } = route.params

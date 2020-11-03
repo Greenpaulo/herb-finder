@@ -3,26 +3,23 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const actionList = ({herbInfo}) => {
 
-  // console.log('prop', herbInfo)
-
+  const genKey = () => {
+    const randomNumber = Math.floor(Math.random() * 1000) + 1;
+    return `${herbInfo.name}-${randomNumber}`
+  };
+  
   const getActions = () => {
     if (Object.keys(herbInfo).length !== 0 && herbInfo.constructor === Object){
-      // console.log('info', herbInfo)
       const actions = [];
       herbInfo.actionsIndications.map((actInd) => {
         actions.push(actInd.actions)
       })
-      // console.log('actions', actions);
       const mainActions = actions[0].split(", ", 3);
-      console.log(mainActions)
       return mainActions.map( action => (
-        <Text style={styles.action}>{action}</Text>
+        <Text style={styles.action} key={genKey()}>{action}</Text>
       ))
-      // return mainActions;
-
     }
   }
-   getActions()
   
   return (
     <View style={styles.actions}>
@@ -38,7 +35,8 @@ const styles = StyleSheet.create({
     width: '100%'
   },
   heading: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 16
   }
 });
     

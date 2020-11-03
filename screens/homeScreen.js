@@ -44,12 +44,14 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     backgroundColor: '#31b526',
+    // justifyContent: "center"
   },
   iconList: {
     width: "100%",
+    // marginHorizontal: 10,
     paddingVertical: 20,
-    justifyContent: "space-around",
-    alignContent: "space-around",
+    // justifyContent: "space-around",
+    // alignContent: "space-around",
     alignItems: "center",
   }
 });

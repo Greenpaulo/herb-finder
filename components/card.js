@@ -13,21 +13,45 @@ export const CARD_HEIGHT = CARD_WIDTH * 0.6;
 
 export default function HerbCard({ herb, navigation }) {
 
+  // herbs[herbInfo.name]
+  // console.log(herb.item.replace(/\W/g, ''))
+  
+  const getHerbParam = () => {
+    const capitalizeFn = /(\b[a-z](?!\s))/g;
+    // Replace dashes with spaces
+    let herbParam = herb.item.replace(/-/g, ' ');
+    // Capitalize the first letter of each word
+    herbParam = herbParam.replace(capitalizeFn, function (x) { return x.toUpperCase(); });
+    // Remove any spaces
+    herbParam = herbParam.replace(/\W/g, '');
+    // console.log('herbParam', herbParam);
+    return herbParam;
+  }
+  
   const [ herbInfo, setHerbInfo ] = useState({})
+  console.log(herbInfo.name)
 
   useEffect(() => {
     // Make API request to fetch the herb info
     const getHerbInfo = async () => {
-      const response = await herbalistAPI.get(`/herb/?${herb.item.replace(/\W/g, '')}`);
+      const response = await herbalistAPI.get(`/herb/?${getHerbParam()}`);
       const data = response.data;
       setHerbInfo(data)
+      console.log(data)
     }
     getHerbInfo();
   }, [])
 
-  // console.log(herbInfo.actionsIndications)
-
-  
+  const getSeperatedName = (name) => {
+    // Need to shorten OregonGrapeRoot - too long for card
+    if (name === 'OregonGrapeRoot') {
+      name = 'OregonGrape'
+    }
+    if (name !== undefined) {
+      // Add a space between capital letters
+      return name.replace(/([A-Z])/g, ' $1').trim();
+    }
+  }
 
   const onPressHandler = () => {
     navigation.navigate('HerbDetails', {herbInfo : herbInfo})
@@ -41,9 +65,8 @@ export default function HerbCard({ herb, navigation }) {
         style={styles.image}
       />
       <View style={styles.info}>
-        <Text style={[styles.name, globalStyles.boldText]}>{herbInfo.name}</Text>
+        <Text style={[styles.name, globalStyles.boldText]}>{getSeperatedName(herbInfo.name)}</Text>
         <Text style={styles.title}>{herbInfo.title}</Text>
-        {/* <Text style={styles.dosage}>{herbInfo.dosage}</Text> */}
         <ActionList herbInfo={herbInfo}/>
       </View>
     </TouchableOpacity>
@@ -54,8 +77,8 @@ const styles = StyleSheet.create({
   card: {
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
-    paddingVertical: 40,
-    paddingHorizontal: 25,
+    paddingVertical: 30,
+    paddingHorizontal: 20,
     // margin: 20,
     borderWidth: 1,
     borderStyle: 'solid',
@@ -68,13 +91,14 @@ const styles = StyleSheet.create({
   image: {
     height: 120,
     width: 120,
-    borderRadius: 120/2
+    borderRadius: 120/2,
+    marginTop: 10
   },
   info: {
-    marginLeft: 40,
+    marginLeft: 20,
   },
   name: {
-    fontSize: 22,
+    fontSize: 24,
     marginBottom: 5,
   },
   title: {

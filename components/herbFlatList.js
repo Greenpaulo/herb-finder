@@ -10,6 +10,9 @@ const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y } } }], {
 });
 
 export default function herbFlatList({herbs, navigation}) {
+
+  // console.log(herbs);
+
   return (
     <AnimatedFlatList
       scrollEventThrottle={16}

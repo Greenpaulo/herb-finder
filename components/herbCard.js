@@ -10,6 +10,8 @@ const height = wHeight - 64;
 
 const herbCard = ({ herb, y, navigation }) => {
 
+  // console.log(herb)
+
   const index = herb.index;
   
   const position = Animated.subtract(index * CARD_HEIGHT, y);
