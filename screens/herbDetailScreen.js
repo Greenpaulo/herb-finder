@@ -31,9 +31,8 @@ export default function HerbDetailScreen({ route }) {
   const renderIndications = (actInd) => {
     return actInd.indications.map(indication => {
       return (
-        // need key
-        <View>
-          <Text style={[styles.textWhite, styles.indications]} key={`key-${genKey()}`}>{indication}</Text>
+        <View key={genKey()}>
+          <Text style={[styles.textWhite, styles.indications]}>{indication}</Text>
         </View>
       )
     })

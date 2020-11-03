@@ -9,7 +9,7 @@ export const globalStyles = StyleSheet.create({
 export const images = {
   herbs: {
     "AgnusCastus": require('../assets/herbs/chaste-tree.jpg'),
-    "Ashwagandha": require('../assets/herbs/ashwagandha.gif'),
+    "Ashwagandha": require('../assets/herbs/ashwagandha.jpg'),
     "Barberry": require('../assets/herbs/barberry.jpg'),
     "BlueFlag": require('../assets/herbs/blue-flag.jpg'),
     "Borage": require('../assets/herbs/borage.jpg'),

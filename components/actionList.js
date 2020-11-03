@@ -15,9 +15,13 @@ const actionList = ({herbInfo}) => {
         actions.push(actInd.actions)
       })
       const mainActions = actions[0].split(", ", 3);
-      return mainActions.map( action => (
-        <Text style={styles.action} key={genKey()}>{action}</Text>
-      ))
+      return mainActions.map( action => {
+        // Remove parenthesis description of actions
+        if ((action.search("\\(")) !== -1) {
+          action = action.split(" (")[0]
+        }
+        return <Text style={styles.action} key={genKey()}>{action}</Text>
+      })
     }
   }
   
@@ -32,7 +36,7 @@ const actionList = ({herbInfo}) => {
 const styles = StyleSheet.create({
   actions: {
     marginTop: 15,
-    width: '100%'
+    width: '100%',
   },
   heading: {
     fontWeight: 'bold',

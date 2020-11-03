@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { setEnabled } from 'react-native/Libraries/Performance/Systrace';
 import herbalistAPI from '../api/theherbalist';
 import { globalStyles, images } from '../styles/global';
 import ActionList from './actionList';
@@ -9,13 +10,12 @@ const { width } = Dimensions.get("window");
 export const CARD_WIDTH = width * 0.9;
 // export const CARD_HEIGHT = CARD_WIDTH * ratio;
 export const CARD_HEIGHT = CARD_WIDTH * 0.6;
+const IMG_DIMENSION = CARD_WIDTH/3;
+const BORDER_RADIUS = IMG_DIMENSION/2;
 
 
 export default function HerbCard({ herb, navigation }) {
 
-  // herbs[herbInfo.name]
-  // console.log(herb.item.replace(/\W/g, ''))
-  
   const getHerbParam = () => {
     const capitalizeFn = /(\b[a-z](?!\s))/g;
     // Replace dashes with spaces
@@ -25,11 +25,18 @@ export default function HerbCard({ herb, navigation }) {
     // Remove any spaces
     herbParam = herbParam.replace(/\W/g, '');
     // console.log('herbParam', herbParam);
+    if ( herbParam === 'PassionFlower') {
+      herbParam = 'Passionflower'
+    }
+    if ( herbParam === 'Elderflower' || herbParam === 'Elderberry') {
+      herbParam = 'Elder'
+    }
+    console.log(herbParam)
     return herbParam;
   }
   
   const [ herbInfo, setHerbInfo ] = useState({})
-  console.log(herbInfo.name)
+  // console.log(herbInfo.name)
 
   useEffect(() => {
     // Make API request to fetch the herb info
@@ -37,7 +44,7 @@ export default function HerbCard({ herb, navigation }) {
       const response = await herbalistAPI.get(`/herb/?${getHerbParam()}`);
       const data = response.data;
       setHerbInfo(data)
-      console.log(data)
+      // console.log(data)
     }
     getHerbInfo();
   }, [])
@@ -47,10 +54,27 @@ export default function HerbCard({ herb, navigation }) {
     if (name === 'OregonGrapeRoot') {
       name = 'OregonGrape'
     }
+    if (name === 'CalifornianPoppy') {
+      name = 'CaliPoppy'
+    }
+    if (name === 'SiberianGinseng') {
+      name = 'SGinseng'
+    }
+    if (name === 'GlobeArtichoke') {
+      name = 'GArtichoke'
+    }
+    
     if (name !== undefined) {
       // Add a space between capital letters
       return name.replace(/([A-Z])/g, ' $1').trim();
     }
+  }
+
+  const getTitle = (title) => {
+    if (title === 'Eleutherococcus senticosus') {
+      title = 'Eleutherococcus sen.'
+    }
+    return title;
   }
 
   const onPressHandler = () => {
@@ -66,7 +90,7 @@ export default function HerbCard({ herb, navigation }) {
       />
       <View style={styles.info}>
         <Text style={[styles.name, globalStyles.boldText]}>{getSeperatedName(herbInfo.name)}</Text>
-        <Text style={styles.title}>{herbInfo.title}</Text>
+        <Text style={styles.title}>{getTitle(herbInfo.title)}</Text>
         <ActionList herbInfo={herbInfo}/>
       </View>
     </TouchableOpacity>
@@ -89,9 +113,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   image: {
-    height: 120,
-    width: 120,
-    borderRadius: 120/2,
+    height: IMG_DIMENSION,
+    width: IMG_DIMENSION,
+    borderRadius: BORDER_RADIUS,
     marginTop: 10
   },
   info: {
@@ -102,7 +126,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   title: {
-    fontSize: 16,
+    fontSize: 14,
     marginLeft: 2
   },
   dosage: {

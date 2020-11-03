@@ -23,11 +23,6 @@ export default function ConditionsScreen({ route, navigation}) {
     }
   }, [])
 
-  // const generateUUID = () => {
-  //   UUIDGenerator.getRandomUUID(uuid => uuid);
-  // };
-
-
   return (
     <View style={styles.container}>
       <FlatList 
@@ -50,6 +45,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   conditionList: {
-    marginTop: 10
+    marginTop: 10,
+    width: '80%'
   }
 });
