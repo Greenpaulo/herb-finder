@@ -11,7 +11,7 @@ const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y } } }], {
 
 export default function herbFlatList({herbs, navigation}) {
 
-  // console.log(herbs);
+  // console.log('herbs', herbs);
 
   return (
     <AnimatedFlatList

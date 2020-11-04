@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Stylesheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Dimensions } from 'react-native';
 
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: 'white',
-    fontSize: 26
+    fontSize: 26,
   },
   hamburger: {
     position: 'absolute',

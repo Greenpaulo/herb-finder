@@ -16,6 +16,8 @@ const BORDER_RADIUS = IMG_DIMENSION/2;
 
 export default function HerbCard({ herb, navigation }) {
 
+  // console.log('herb in card', herb)
+
   const getHerbParam = () => {
     const capitalizeFn = /(\b[a-z](?!\s))/g;
     // Replace dashes with spaces
@@ -31,7 +33,7 @@ export default function HerbCard({ herb, navigation }) {
     if ( herbParam === 'Elderflower' || herbParam === 'Elderberry') {
       herbParam = 'Elder'
     }
-    console.log(herbParam)
+    // console.log('herbParam', herbParam)
     return herbParam;
   }
   
@@ -63,6 +65,12 @@ export default function HerbCard({ herb, navigation }) {
     if (name === 'GlobeArtichoke') {
       name = 'GArtichoke'
     }
+    if (herb.item === 'Elderflower') {
+      name = 'Elderflower'
+    }
+    if (herb.item === 'Elderberry') {
+      name = 'Elderberry'
+    }
     
     if (name !== undefined) {
       // Add a space between capital letters
@@ -74,6 +82,12 @@ export default function HerbCard({ herb, navigation }) {
     if (title === 'Eleutherococcus senticosus') {
       title = 'Eleutherococcus sen.'
     }
+    if (herb.item === 'Elderflower') {
+      title = 'Sambucus nigra flos.'
+    }
+    if (herb.item === 'Elderberry') {
+      title = 'Sambucus nigra fructus.'
+    }
     return title;
   }
 
@@ -81,17 +95,24 @@ export default function HerbCard({ herb, navigation }) {
     navigation.navigate('HerbDetails', {herbInfo : herbInfo})
   }
 
+  const getImgSrc = () => {
+    if (herb.item === 'Elderflower') {
+      return images.herbs['Elderflower']
+    }
+    return images.herbs[herbInfo.name]
+  }
+
   return (
     <TouchableOpacity style={styles.card} onPress={onPressHandler}>
       <Image
-        source={images.herbs[herbInfo.name]}
+        source={getImgSrc()}
         fadeDuration={0}
         style={styles.image}
       />
       <View style={styles.info}>
         <Text style={[styles.name, globalStyles.boldText]}>{getSeperatedName(herbInfo.name)}</Text>
         <Text style={styles.title}>{getTitle(herbInfo.title)}</Text>
-        <ActionList herbInfo={herbInfo}/>
+        <ActionList herbInfo={herbInfo} herbName={herb.item}/>
       </View>
     </TouchableOpacity>
   )

@@ -36,6 +36,5 @@ const styles = StyleSheet.create({
   conditionText: {
     color: '#fff',
     fontSize: 20,
-
   }
 });

@@ -25,6 +25,7 @@ export const images = {
     "Dandelion": require('../assets/herbs/tarax2.jpg'),
     "Echinacea": require('../assets/herbs/echinacea.jpg'),
     "Elder": require('../assets/herbs/elder.jpg'),
+    "Elderflower": require('../assets/herbs/elderflower.png'),
     "Elecampane": require('../assets/herbs/elecampagne.jpg'),
     "Ginger": require('../assets/herbs/ginger.jpg'),
     "Ginkgo": require('../assets/herbs/ginkgo.jpg'),
