@@ -1,6 +1,7 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import CategoryIcon from '../components/categoryIcon';
+import herbalistAPI from '../api/theherbalist';
 
 
 export default function HomeScreen({ navigation }) {
@@ -17,6 +18,23 @@ export default function HomeScreen({ navigation }) {
     { title: "Women's Health", keyword: "womens", imgSrc: require("../assets/female.png"), iconColor: "#85BA48", width: 70, height: 70, margin: [0,0,5,10] },
     { title: "Men's Health", keyword: "mens", imgSrc: require("../assets/male.png"), iconColor: "#2193CF", width: 70, height: 70, margin: [0,0,7,0] }
   ]);
+
+  const [apiActive, setApiActive] = useState(false);
+
+  useEffect(() => {
+    if (!apiActive) {
+      // Fetch the condition list for the category from The Herbalist API
+      const pingAPI = async () => {
+        const response = await herbalistAPI.get('/conditions?mens')
+        const data = response.data;
+        console.log(data);
+        setApiActive(true)
+      }
+      pingAPI();
+    }
+    return () => {
+    }
+  }, [])
 
   const onPressHandler = (category) => {
     navigation.navigate('Conditions', { category: category })
