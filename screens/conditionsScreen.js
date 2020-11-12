@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, Text, FlatList } from 'react-native';
 import herbalistAPI from '../api/theherbalist';
 import Condition from '../components/condition';
-
 
 export default function ConditionsScreen({ route, navigation}) {
   
@@ -23,18 +22,28 @@ export default function ConditionsScreen({ route, navigation}) {
     }
   }, [])
 
-  return (
-    <View style={styles.container}>
-      <FlatList 
-        data={conditions}
-        style={styles.conditionList}
-        renderItem={({item, index}) => (
-          <Condition navigation={navigation} condition={item} color={category.iconColor} />
-        )}
-        keyExtractor={(item, index) => 'key' + index}
-      />
-    </View>
-  );
+  if ( conditions.length === 0) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.loadingText}>Loading...</Text>
+      </View>
+    )
+  } else {
+    return (
+      <View style={styles.container}>
+        <FlatList 
+          data={conditions}
+          style={styles.conditionList}
+          renderItem={({item, index}) => (
+            <Condition navigation={navigation} condition={item} color={category.iconColor} />
+          )}
+          keyExtractor={(item, index) => 'key' + index}
+        />
+      </View>
+    );
+  }
+  
+  
 }
 
 const styles = StyleSheet.create({
@@ -43,6 +52,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#31b526',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  loadingText: {
+    color: "white",
+    fontSize: 22 
   },
   conditionList: {
     marginTop: 10,
